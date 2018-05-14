@@ -18,7 +18,6 @@ public class Main {
 				tree.addElement(input.nextInt());
 			}
 			else{
-				input.nextInt();
 				int value = input.nextInt();
 				if(tree.findNode(tree.getRoot(), value) == null){
 					System.out.println("no");
@@ -87,7 +86,7 @@ public class Main {
 		public Node findNode(Node r, Integer e){
 			if(r == null) return null;
 			if(r.getElement() == e) return r;
-			if(r.getElement() < e) return findNode(r.getLeft(), e);
+			if(e < r.getElement()) return findNode(r.getLeft(), e);
 			return findNode(r.getRight(), e);
 		}
 		
