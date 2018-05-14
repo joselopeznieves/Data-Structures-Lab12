@@ -119,7 +119,7 @@ public class Main {
 			}
 			
 			public boolean hasLeft(){
-				return left == null;
+				return left != null;
 			}
 			
 			public Node getRight() {
@@ -127,7 +127,7 @@ public class Main {
 			}
 			
 			public boolean hasRight(){
-				return right == null;
+				return right != null;
 			}
 
 			public void setElement(Integer element) {
