@@ -1,13 +1,40 @@
 package basicBST;
 
+import java.util.Scanner;
+
 public class Main {
 
 	
 	public static void main(String[] args){
 		
+		Scanner input = new Scanner(System.in);
+		
+		int queries = input.nextInt();
+		
+		BST tree = new BST();
+		
+		for(int i = 0; i < queries; i++){
+			if(input.nextInt() == 1){
+				tree.addElement(input.nextInt());
+			}
+			else{
+				input.nextInt();
+				int value = input.nextInt();
+				if(tree.findNode(tree.getRoot(), value) == null){
+					System.out.println("no");
+				}
+				else{
+					System.out.println("yes");
+				}
+			}
+			
+		}
+		
+		input.close();
+		
 	}
 	
-	public class BST{
+	public static class BST{
 		
 		private Node root;
 		private int size;
@@ -21,6 +48,10 @@ public class Main {
 			return this.size;
 		}
 		
+		public Node getRoot(){
+			return this.root;
+		}
+		
 		public boolean isEmpty(){
 			return this.size == 0;
 		}
@@ -31,6 +62,7 @@ public class Main {
 			else{
 				insert(root, e);
 			}
+			size++;
 		}
 		
 		private void insert(Node node, Integer e){
@@ -40,7 +72,7 @@ public class Main {
 					node.setLeft(nta);
 				}
 				else
-					insert(node.left, e);
+					insert(node.getLeft(), e);
 			}
 			else{
 				if(!node.hasRight()){
@@ -48,10 +80,16 @@ public class Main {
 					node.setRight(nta);
 				}
 				else
-					insert(node.right, e);
+					insert(node.getRight(), e);
 			}
 		}
 		
+		public Node findNode(Node r, Integer e){
+			if(r == null) return null;
+			if(r.getElement() == e) return r;
+			if(r.getElement() < e) return findNode(r.getLeft(), e);
+			return findNode(r.getRight(), e);
+		}
 		
 		
 		
