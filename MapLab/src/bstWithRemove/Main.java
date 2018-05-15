@@ -14,10 +14,11 @@ public static void main(String[] args){
 		BSTWRemove tree = new BSTWRemove();
 		
 		for(int i = 0; i < queries; i++){
-			if(input.nextInt() == 1){
+			int quesType = input.nextInt();
+			if(quesType == 1){
 				tree.addElement(input.nextInt());
 			}
-			else{
+			else if(quesType == 2){
 				int value = input.nextInt();
 				if(tree.findNode(tree.getRoot(), value) == null){
 					System.out.println("no");
@@ -25,6 +26,13 @@ public static void main(String[] args){
 				else{
 					System.out.println("yes");
 				}
+			}
+			else {
+				int value = input.nextInt();
+				if(tree.removeElement(value) == null)
+					System.out.println("not found");
+				else
+					System.out.println("erased");
 			}
 			
 		}
